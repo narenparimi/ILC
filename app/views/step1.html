@@ -1,0 +1,16 @@
+<div class="container" style="align:center">
+	<form role="form" name="surveyNameForm" ng-controller="WizardsController" novalidate>
+				<div>
+					<label class="btn btn-default">
+						<input type="text" placeholder="Form Name" ng-model="formName" />
+					</label><br>
+					<label class="btn btn-default">
+						<input type="text"  placeholder="Form Description" name="formDescription" ng-model="formDescription" />
+					</label><br>
+				</div>
+				<div>
+						<input type="submit" value="Next" class="btn" ng-click="createSurveyName()"
+ng-disabled="surveyNameForm.formName.$dirty && surveyNameForm.formName.$invalid || surveyNameForm.formDescription.$dirty && surveyNameForm.formDescription.$invalid"/>
+				</div>	
+	</form>
+</div>

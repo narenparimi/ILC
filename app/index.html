@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="formBuilderApp" lang="en">
+  <head>
+    <meta charset="utf-8">
+	  <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="device-width,initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      
+    <title>Form Builder Applciation</title>
+   <!-- <link rel="stylesheet" href="app/css/main.css">-->
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+	  <style>
+        body         { padding-top:50px; }
+        form, pre    { margin-bottom:50px; }
+    </style>
+  </head>
+  <body > <!--style="width:400px; padding:15px;"-->
+      <!---->
+	  <div id="crumb" >
+		<ul>
+			<li><a href="#step1">One</a></li>
+			<li><a href="#step2">Two</a></li>
+			<li><a href="#step3">Three</a></li>
+			<li><a href="#step4">Four</a></li>
+			<li><a href="#step5">Five</a></li>
+			<li><a href="#step6">Six</a></li>
+		</ul>
+	</div>
+    <div ng-view></div>
+    <!-- Vendor libraries -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <script src="https://fuelcdn.com/fuelux/2.3/loader.min.js"></script>
+    <!-- Application Files -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/WizardController.js"></script>
+    <!--<script src="js/factories/BuilderFactories.js"></script>-->
+    
+    
+  </body>
+</html>

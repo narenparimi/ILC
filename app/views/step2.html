@@ -1,0 +1,73 @@
+	
+<div class="container" ng-controller="WizardsController">
+	<form role="form">
+		<fieldset>
+			<div class="form-group">
+				<p class="breadcrumb">
+					Add a Question.
+					<input type="text" ng-model="step2Model.addAQuestion" class="form-control" placeholder="Add a Question" />
+				</p>
+				<div class="col-sm-11" style="background-color:lavender;">Type of question</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name="optradio" ng-model="step2Model.na" 
+							   ng-click="step2Model.ynCamera=false" />Yes / No / NA
+					</label>
+					<div>
+						<label>
+							<input type="checkbox" ng-model="step2Model.naCamera" ng-disabled="step2Model.na"/>
+							<i class="glyphicon glyphicon-camera"></i> Camera
+						</label>
+					</div>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name="optradio"  ng-model="step2Model.yn" ng-click="step2Model.naCamera=false" />
+						Yes / No
+					</label>
+					<div>
+						<label>
+							<input type="checkbox"  ng-model="step2Model.ynCamera" ng-disabled="step2Model.yn"/>
+							<i class="glyphicon glyphicon-camera"></i> Camera
+						</label>
+					</div>
+				</div>
+				<div class="radio">
+					<label>
+						<input type="radio" name="optradio" ng-click="step2Model.naCamera=false;step2Model.ynCamera=false" />
+						<input type="text" class="form-control" ng-model="step2Model.desc" placeholder="Details"/>
+					</label>
+				</div>
+				<div class="form-group">
+        
+				<div class="radio">
+					<label >
+						<input type="radio" name="optradio" ng-click="step2Model.naCamera=false;step2Model.ynCamera=false"
+							   ng-model="step2Model.staffLocation" />Staff @ location
+					</label>
+				</div>
+			
+				<div class="checkbox" style="background-color:lavender;">
+					<label>
+						<input type="checkbox" ng-model="step2Model.flag">Flag/No Flag</input>
+					</label>
+				</div>
+				<div class="checkbox" style="background-color:lavender;">
+					<label>
+					  <input type="checkbox" ng-model="step2Model.req">Req or Not (Not req optional)</input>
+					</label>
+				</div>
+			</div>
+			<div>
+				<input type="button"  value="Add a Question" class="btn btn-primary btn-lg" ng-click="addQuestion()"/>
+			</div>
+		</fieldset>
+	</form>
+	<div class="container-fluid panel panel-body" ng-repeat="ques in model.step2">
+	   <label>{{ques.addAQuestion}}</label>
+	</div>
+	<div class="container">
+		<input type="button" value="Next" class="btn btn-success btn-lg text-justify"/>
+	</div>
+</div>
+
