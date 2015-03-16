@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="styles/style.css">
 	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="styles/test.css">
-	<style>
+	<!--<style>
 		body {
 			padding-top: 50px;
 		}
@@ -18,26 +18,11 @@
 		form,pre {
 			margin-bottom: 50px;
 		}
-	</style>
+	</style>-->
 </head>
 
-<body>
-	<div id="crumb">
-		<ul>
-			<li><a href="#step1">One</a>
-			</li>
-			<li><a href="#step2">Two</a>
-			</li>
-			<li><a href="#step3">Three</a>
-			</li>
-			<li><a href="#step4">Four</a>
-			</li>
-			<li><a href="#step5">Five</a>
-			</li>
-			<li><a href="#step6">Six</a>
-			</li>
-		</ul>
-	</div>
+<body ng-controller="WizardsController">
+	<bread-crumb></bread-crumb>
 	<div ng-view></div>
 
 	<!-- Vendor libraries -->
