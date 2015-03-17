@@ -1,6 +1,5 @@
-	
 <div class="container" ng-controller="WizardsController">
-	<form role="form">
+	<form>
 		<fieldset>
 			<div class="form-group">
 				<p class="breadcrumb">
@@ -10,64 +9,86 @@
 				<div class="col-sm-11" style="background-color:lavender;">Type of question</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name="optradio" ng-model="step2Model.na" 
-							   ng-click="step2Model.ynCamera=false" />Yes / No / NA
+						<input type="radio" name="optradio" ng-model="step2Model.typeOfQuestion" value="YNA"
+							   ng-click="resetTypeOfQuestions()" />Yes / No / NA
 					</label>
 					<div>
 						<label>
-							<input type="checkbox" ng-model="step2Model.naCamera" ng-disabled="step2Model.na"/>
+							<input type="checkbox" ng-model="step2Model.ynaCamera" ng-disabled="step2Model.typeOfQuestion!='YNA'" />
 							<i class="glyphicon glyphicon-camera"></i> Camera
 						</label>
 					</div>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name="optradio"  ng-model="step2Model.yn" ng-click="step2Model.naCamera=false" />
-						Yes / No
+						<input type="radio" name="optradio" ng-model="step2Model.typeOfQuestion" value="YN"
+							   ng-click="resetTypeOfQuestions()" /> Yes / No
 					</label>
 					<div>
 						<label>
-							<input type="checkbox"  ng-model="step2Model.ynCamera" ng-disabled="step2Model.yn"/>
+							<input type="checkbox" ng-model="step2Model.ynCamera" ng-disabled="step2Model.typeOfQuestion!='YN'"
+								   ng-click="resetTypeOfQuestions()" />
 							<i class="glyphicon glyphicon-camera"></i> Camera
 						</label>
 					</div>
 				</div>
 				<div class="radio">
 					<label>
-						<input type="radio" name="optradio" ng-click="step2Model.naCamera=false;step2Model.ynCamera=false" />
-						<input type="text" class="form-control" ng-model="step2Model.desc" placeholder="Details"/>
+						<input type="radio" name="optradio" ng-model="step2Model.typeOfQuestion"
+							   ng-click="resetTypeOfQuestions()" value="DETAILS" />
+						<input type="text" class="form-control" ng-model="step2Model.details" placeholder="Details" />
 					</label>
 				</div>
 				<div class="form-group">
-        
-				<div class="radio">
-					<label >
-						<input type="radio" name="optradio" ng-click="step2Model.naCamera=false;step2Model.ynCamera=false"
-							   ng-model="step2Model.staffLocation" />Staff @ location
-					</label>
+					<div class="radio">
+						<label>
+							<input type="radio" name="optradio" ng-model="step2Model.typeOfQuestion"
+								   ng-click="resetTypeOfQuestions()" value="staff@Location" />Staff @ location
+						</label>
+					</div>
+					<div class="checkbox" style="background-color:lavender;">
+						<label>
+							<input type="checkbox" ng-model="step2Model.flag">Flag/No Flag</input>
+						</label>
+					</div>
+					<div class="checkbox" style="background-color:lavender;">
+						<label>
+							<input type="checkbox" ng-model="step2Model.req">Req or Not (Not req optional)</input>
+						</label>
+					</div>
 				</div>
-			
-				<div class="checkbox" style="background-color:lavender;">
-					<label>
-						<input type="checkbox" ng-model="step2Model.flag">Flag/No Flag</input>
-					</label>
+				<div>
+					<input type="button" value="Add / Update a Question" class="btn btn-primary btn-lg" ng-click="addQuestion()" />
+					<input type="button" value="Clear" class="btn btn-success btn-lg" ng-click="resetStep2()" />
 				</div>
-				<div class="checkbox" style="background-color:lavender;">
-					<label>
-					  <input type="checkbox" ng-model="step2Model.req">Req or Not (Not req optional)</input>
-					</label>
-				</div>
-			</div>
-			<div>
-				<input type="button"  value="Add a Question" class="btn btn-primary btn-lg" ng-click="addQuestion()"/>
-			</div>
 		</fieldset>
 	</form>
-	<div class="container-fluid panel panel-body" ng-repeat="ques in model.step2">
-	   <label>{{ques.addAQuestion}}</label>
-	</div>
-	<div class="container">
-		<input type="button" value="Next" class="btn btn-success btn-lg text-justify"/>
-	</div>
-</div>
 
+	<div class="simpleDemo row">
+		<div class="col-md-8">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-info">
+						<div class="panel-heading">
+							<h3 class="panel-title">Added Questions </h3>
+						</div>
+						<div class="panel-body">
+							<ul dnd-list="model.step2.listOfQuestions">
+								<li ng-repeat="item in model.step2.listOfQuestions" dnd-draggable="item"
+									dnd-moved="model.step2.listOfQuestions.splice($index, 1)" dnd-effect-allowed="move"
+									dnd-selected="model.step2.selected = item" ng-class="{'selected': model.step2.selected === item}"
+									ng-click="editQuestion(item)">
+									{{item.addAQuestion}}
+									<i class="glyphicon glyphicon-trash" ng-click="deleteQuestion($index)"></i>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<input type="button" value="Next" class="btn btn-success btn-lg text-justify" ng-click="nextStep(2)" />
+		</div>
+	</div>
+	</div>

@@ -1,4 +1,4 @@
-    angular.module('formBuilderApp', ['ngRoute']).config(function ($routeProvider) {
+    angular.module('formBuilderApp', ['ngRoute','dndLists']).config(function ($routeProvider) {
         //'use strict';
         $routeProvider.when('/home', {
             templateUrl: 'views/home.html',
