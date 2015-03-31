@@ -1,15 +1,15 @@
 <div class="container" style="align:center">
-	<form role="form" name="surveyNameForm" ng-controller="WizardsController" novalidate>
+	<form role="form" name="surveyNameForm" ng-controller="FireBaseController" ng-submit="storeFormData()" novalidate>
 				<div>
 					<label class="btn btn-default">
-						<input type="text" placeholder="Form Name" ng-model="formName" />
+						<input type="text" placeholder="Form Name" ng-model="form_id" />
 					</label><br>
 					<label class="btn btn-default">
-						<input type="text"  placeholder="Form Description" name="formDescription" ng-model="formDescription" />
+						<input type="text"  placeholder="Form Description" name="formDescription" ng-model="form_name" />
 					</label><br>
 				</div>
 				<div>
-						<input type="submit" value="Next" class="btn" ng-click="createSurveyName()"
+						<input type="submit" value="Next" class="btn" 
 ng-disabled="surveyNameForm.formName.$dirty && surveyNameForm.formName.$invalid || surveyNameForm.formDescription.$dirty && surveyNameForm.formDescription.$invalid"/>
 				</div>
 		
